@@ -12,9 +12,18 @@ it("No image displays after number of wrong guesses exceeds maxWrong",
   function () {
     const { container, debug } = render(
       <Snowman
-        images={[img0, img1, img2, img3, img4, img5, img6]}
+        images={[img0]}
         words={["apple"]}
         maxWrong={1}
       />
     );
+
+    const gButton = document.querySelector("div.Snowman button[value='g']");
+    const hButton = document.querySelector("div.Snowman button[value='h']");
+    fireEvent.click(gButton);
+    fireEvent.click(hButton);
+
+    const img = document.querySelector("img");
+    expect(img.alt).toEqual("2");
+    expect(img.hasAttribute("src")).toEqual(false);
   });
