@@ -19,11 +19,11 @@ it("No image displays after number of wrong guesses exceeds maxWrong",
     );
 
     const gButton = document.querySelector("div.Snowman button[value='g']");
-    const hButton = document.querySelector("div.Snowman button[value='h']");
     fireEvent.click(gButton);
-    fireEvent.click(hButton);
 
     const img = document.querySelector("img");
-    expect(img.alt).toEqual("2");
-    expect(img.hasAttribute("src")).toEqual(false);
+    expect(img.alt).toEqual("1");
+    expect(container.querySelector("button")).not.toBeInTheDocument();
+    expect(container.querySelector(".Snowman-lose-msg")).toBeInTheDocument();
+
   });
